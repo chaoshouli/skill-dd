@@ -1,0 +1,7 @@
+interface:
+  display_name: "Skill DD"
+  short_description: "拆解AI Skill的能力结构与复用价值"
+  default_prompt: "Use $skill-dd to reverse engineer this GitHub repo, Skill, agent, prompt, or workflow and judge whether it is worth learning, integrating, or adapting."
+
+policy:
+  allow_implicit_invocation: true
