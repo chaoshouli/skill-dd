@@ -47,6 +47,18 @@ The default report covers:
 6. Fit for AI marketing, Skill libraries, and production workflows
 7. Final investment decision and weighted score
 
+## GitHub Repo Reviews
+
+For GitHub-hosted Skills and small repositories, `skill-dd` now uses a low-latency fetch path by default:
+
+1. Read repo metadata through GitHub API.
+2. Read the contents tree through GitHub API.
+3. Inspect only high-signal files first: `README.md`, `SKILL.md`, `references/`, `scripts/`, `examples/`, `agents/`, and config files.
+4. Decode API file contents from base64 when needed.
+5. Use `git clone` only when local execution, full history, or binary asset inspection is necessary.
+
+This avoids blocking first-pass judgment on slow or unstable `git clone` / `raw.githubusercontent.com` paths.
+
 ## Install
 
 Clone or download this repository, then copy it into your Codex skills directory:
@@ -78,6 +90,7 @@ https://github.com/example/repo
 ```text
 SKILL.md
 agents/openai.yaml
+references/github-fetch-policy.md
 references/report-template.md
 ```
 

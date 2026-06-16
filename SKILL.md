@@ -29,6 +29,8 @@ Accept any of these:
 
 If the input is a URL and browsing or GitHub tools are available, inspect the actual repo or document before judging. If you cannot access the source, say so and mark findings as based on pasted context only.
 
+For GitHub repository URLs, prefer the low-latency API path before cloning: read repo metadata, contents tree, `README.md`, `SKILL.md`, `references/`, `scripts/`, `examples/`, and `agents/` through GitHub API, then clone only if local execution or full history is necessary. Read `references/github-fetch-policy.md` when GitHub access is slow, clone/raw fails, or the user is testing response speed.
+
 ## Workflow
 
 ### Step 1: Identify the Artifact
@@ -186,7 +188,7 @@ Use stars when helpful, but the decision sentence matters more than the stars.
 - Separate "能做到" from "值得沉淀成资产".
 - Do not over-index on polish, popularity, or demo appeal.
 - If source evidence is thin, lower confidence and list what must be checked next.
-- For GitHub repos, inspect structure first: README, examples, scripts, package files, docs, and recent activity if available.
+- For GitHub repos, inspect structure first through the GitHub API when possible: metadata, README, SKILL.md, examples, scripts, references, agents/config files, package files, docs, and recent activity. Do not block first-pass judgment on `git clone`.
 
 ## Report Template
 
